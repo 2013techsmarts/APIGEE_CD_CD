@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "00998bc4-154b-463e-922a-cbdf9f41a822",
+		"name": "CI_CD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19bd9bbf-4107-46dd-8354-507f707328c0",
+						"exec": [
+							"pm.test(\"Check lastName\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.root.lastName).to.eql(\"John\");",
+							"});",
+							"",
+							"pm.test(\"Check city\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.root.city).to.eql(\"San Jose\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://<Proxy_name>/variables/xml",
+					"protocol": "http",
+					"host": [
+						"janapatisiva-eval-test",
+						"apigee",
+						"net"
+					],
+					"path": [
+						"variables",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "63198992-96df-4d09-84c2-4563f5e89e28",
+						"exec": [
+							"pm.test(\"Check firstName\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.firstName).to.eql(\"John\");",
+							"});",
+							"",
+							"pm.test(\"Check state\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.state).to.eql(\"VA\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://<Proxy_name>/variables/json",
+					"protocol": "http",
+					"host": [
+						"janapatisiva-eval-test",
+						"apigee",
+						"net"
+					],
+					"path": [
+						"variables",
+						"json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
